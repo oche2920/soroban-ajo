@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@axe-core/react": "^4.11.1",
+    "@sentry/nextjs": "^8.0.0",
     "@stellar/freighter-api": "^6.0.1",
     "@tanstack/react-query": "^5.28.0",
     "axios": "^1.6.0",
@@ -26,6 +27,7 @@
     "date-fns": "^2.30.0",
     "focus-trap-react": "^12.0.0",
     "framer-motion": "^11.18.2",
+    "intl-messageformat": "^11.2.0",
     "jspdf": "^4.2.0",
     "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.575.0",

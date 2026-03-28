@@ -7,7 +7,7 @@ import { WalletConnector } from './WalletConnector'
 import { NotificationHistory } from './NotificationHistory'
 import NotificationBell from './NotificationBell'
 import Onboarding from './Onboarding'
-import TourGuide from './TourGuide'
+import { ProductTour } from './tour/ProductTour'
 import { ThemeToggle } from './ThemeToggle'
 import { useOnboarding } from '@/hooks/useOnboarding'
 
@@ -97,7 +97,6 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                 <WalletConnector />
               </div>
             </div>
-          </div>
 
           {/* Navigation */}
           <nav
@@ -149,7 +148,38 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
       {/* Onboarding & Tour */}
       <Onboarding />
-      <TourGuide />
+      <ProductTour 
+        initialSteps={[
+          {
+            id: 'wallet',
+            target: '[data-tour="wallet-connect"]',
+            title: 'Digital Wallet',
+            content: 'Connect your Stellar wallet to start participating in savings groups securely.',
+            position: 'bottom'
+          },
+          {
+            id: 'dashboard',
+            target: '[data-tour="dashboard"]',
+            title: 'Financial Overview',
+            content: 'Track your contributions, earnings, and active groups in one place.',
+            position: 'bottom'
+          },
+          {
+            id: 'groups',
+            target: '[data-tour="groups-list"]',
+            title: 'Explore Groups',
+            content: 'Find savings groups that match your financial goals and risk profile.',
+            position: 'bottom'
+          },
+          {
+            id: 'profile',
+            target: '[data-tour="profile"]',
+            title: 'Your Account',
+            content: 'Manage your personal settings, security preferences, and view your history.',
+            position: 'bottom'
+          }
+        ]}
+      />
 
       {/* Footer */}
       <footer className="bg-white dark:bg-dark-bg-secondary border-t border-gray-200 dark:border-dark-border mt-auto">
@@ -232,11 +262,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
               </ul>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-dark-border text-center text-sm text-gray-600 dark:text-slate-400">
-            <p>&copy; {new Date().getFullYear()} Ajo. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   )
 }
