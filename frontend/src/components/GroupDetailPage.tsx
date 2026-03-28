@@ -1,5 +1,9 @@
-// Issue #27: Create group detail page with tabs
-// Enhanced with redesigned information architecture, member cards, and contribution timeline
+/**
+ * @file GroupDetailPage.tsx
+ * @description The primary dashboard page for a specific savings group.
+ * Orchestrates multiple sub-components across tabs (Overview, Members, History, Settings)
+ * and provides group-level actions like inviting members and making contributions.
+ */
 
 import React, { useState } from 'react'
 import { ContributionForm } from './ContributionForm'
@@ -13,13 +17,26 @@ import { useGroupDetail, useGroupMembers } from '../hooks/useContractData'
 
 type TabKey = 'overview' | 'members' | 'timeline' | 'settings'
 
+/**
+ * Properties for the GroupDetailPage component.
+ */
 interface GroupDetailPageProps {
+  /** The unique identifier of the group to display */
   groupId: string
+  /** Optional group name passed from parent (overridden by fetched data) */
   groupName?: string
+  /** Callback for sharing the group invite */
   onShareLink?: () => void
+  /** Callback for copying the group invite link to clipboard */
   onCopyLink?: () => void
 }
 
+/**
+ * A tabbed dashboard component for viewing and interacting with a single Ajo group.
+ * Fetches real-time group and member data from the Soroban contract.
+ * 
+ * @param props - Component properties
+ */
 export const GroupDetailPage: React.FC<GroupDetailPageProps> = ({
   groupId,
   groupName: propGroupName,
